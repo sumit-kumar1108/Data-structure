@@ -1,0 +1,19 @@
+class Solution {
+     public boolean solve(TreeNode l,TreeNode r)
+    {
+        if(l==null && r==null) return true;
+        if(l==null || r==null) return false;
+        if(l.val  != r.val) return false;
+        boolean a=solve(l.left,r.right);
+        boolean b=solve(l.right,r.left);
+        if(!a) return false;
+        if(!b) return false;
+        return true;
+    }
+    public boolean isSymmetric(TreeNode root) {
+        if(root==null)return true;
+        if(root.left==null&root.right==null)return true;
+        return solve(root.left,root.right);
+        
+    }
+}
